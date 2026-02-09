@@ -62,6 +62,28 @@ export const projects = [
       </>
     ),
   },
+  {
+  title: "CantGetCaught-Code",
+  imgSrc: "/cantgetcaught-code.png",
+  code: "https://github.com/Lokeshsingh78/cantgetcaught-code",
+  projectLink: "https://cantgetcaught-code.vercel.app/",
+  tech: ["Next.js", "React", "JavaScript", "CSS3", "API"],
+  description: "A VS Code–style web app that displays live news and stock updates so you don’t get caught in workplaces.",
+  modalContent: (
+    <>
+      <p>
+        A VS Code–inspired web application that presents real-time news and stock market data in a professional workspace layout.
+      </p>
+      <p>
+        Designed for users who want quick access to important updates without switching between multiple platforms.
+      </p>
+      <p>
+        Includes live API integration, fast performance with Next.js, responsive design, and a clean, productivity-focused interface.
+      </p>
+    </>
+  ),
+},
+
  {
   title: "Indian Armed Forces Ranks",
   imgSrc: "/indian-armed-forces.png",
