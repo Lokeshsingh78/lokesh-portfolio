@@ -1,5 +1,4 @@
 "use client"
-
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
@@ -7,10 +6,14 @@ export const SideBar = () => {
     const [selected, setSelected] = useState("");
 
     useEffect(() => {
+        const mainEl = document.getElementById("main");
+
         const sections = document.querySelectorAll(".section-wrapper");
 
-        const options = {
-            threshold: 0.3,
+        const options: IntersectionObserverInit = {
+            root: mainEl,           // ← YAHI FIX HAI
+            threshold: 0,
+            rootMargin: "-40% 0px -55% 0px",  // ← middle zone detect karo
         };
 
         const callback = (entries: IntersectionObserverEntry[]) => {
@@ -23,8 +26,9 @@ export const SideBar = () => {
         };
 
         const observer = new IntersectionObserver(callback, options);
-
         sections.forEach((section) => observer.observe(section));
+
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -35,18 +39,18 @@ export const SideBar = () => {
                 transition={{ duration: 0.5 }}
                 className="sidebar"
             >
-               <span
-    className="logo"
-    onClick={() => {
-        const main = document.getElementById("main");
-        if (main) {
-            main.scrollTo({ top: 0, behavior: "smooth" });
-        }
-        setSelected("home");
-    }}
->
-     ⌂<span></span>
-</span>
+                <span
+                    className="logo"
+                    onClick={() => {
+                        const main = document.getElementById("main");
+                        if (main) {
+                            main.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                        setSelected("home");
+                    }}
+                >
+                    ⌂<span></span>
+                </span>
                 <motion.a
                     initial={{ x: 70 }}
                     animate={{ x: 0 }}
@@ -57,7 +61,6 @@ export const SideBar = () => {
                 >
                     About
                 </motion.a>
-
                 <motion.a
                     initial={{ x: 70 }}
                     animate={{ x: 0 }}
@@ -68,7 +71,6 @@ export const SideBar = () => {
                 >
                     Projects
                 </motion.a>
-
                 <motion.a
                     initial={{ x: 70 }}
                     animate={{ x: 0 }}
@@ -79,7 +81,6 @@ export const SideBar = () => {
                 >
                     Blogs
                 </motion.a>
-
                 <motion.a
                     initial={{ x: 70 }}
                     animate={{ x: 0 }}
