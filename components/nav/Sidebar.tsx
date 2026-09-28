@@ -7,16 +7,38 @@ export const SideBar = () => {
 
     useEffect(() => {
         const mainEl = document.getElementById("main");
+        if (!mainEl) return;
+
+        const handleScroll = () => {
+            if (mainEl.scrollTop < 120) {
+                setSelected("home");
+            } else if (mainEl.scrollHeight - mainEl.scrollTop - mainEl.clientHeight < 120) {
+                setSelected("contact");
+            }
+        };
+
+        mainEl.addEventListener("scroll", handleScroll, { passive: true });
+        if (mainEl.scrollTop < 120) {
+            setSelected("home");
+        }
 
         const sections = document.querySelectorAll(".section-wrapper");
 
         const options: IntersectionObserverInit = {
-            root: mainEl,           // ← YAHI FIX HAI
+            root: mainEl,
             threshold: 0,
-            rootMargin: "-40% 0px -55% 0px",  // ← middle zone detect karo
+            rootMargin: "-30% 0px -60% 0px",
         };
 
         const callback = (entries: IntersectionObserverEntry[]) => {
+            if (mainEl.scrollTop < 120) {
+                setSelected("home");
+                return;
+            }
+            if (mainEl.scrollHeight - mainEl.scrollTop - mainEl.clientHeight < 120) {
+                setSelected("contact");
+                return;
+            }
             entries.forEach((entry) => {
                 const target = entry.target as HTMLElement;
                 if (entry.isIntersecting && target.id) {
@@ -28,7 +50,10 @@ export const SideBar = () => {
         const observer = new IntersectionObserver(callback, options);
         sections.forEach((section) => observer.observe(section));
 
-        return () => observer.disconnect();
+        return () => {
+            mainEl.removeEventListener("scroll", handleScroll);
+            observer.disconnect();
+        };
     }, []);
 
     return (

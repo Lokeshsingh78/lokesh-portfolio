@@ -79,6 +79,7 @@ body {
 #main {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -90,6 +91,11 @@ body {
   position: relative;
   z-index: 10;
   max-width: 1150px;
+  min-height: calc(100vh - 81px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 81px;
   margin: auto;
   padding: 4.5rem 1.5rem;
   overflow: hidden;
@@ -97,7 +103,7 @@ body {
 
 @media (min-width: 768px) {
   .section-wrapper {
-    padding: 6rem;
+    padding: 5rem 2rem;
   }
 }
 
@@ -168,15 +174,23 @@ body {
 
 /* Hero section css */
 .hero {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding: 1.25rem;
+  min-height: calc(100vh - 81px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .hero {
-    margin-top: 3.5rem;
-    margin-bottom: 3rem;
+    min-height: calc(100vh - 81px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 2.5rem 1.75rem;
   }
 }
@@ -230,13 +244,13 @@ h1.title span {
   align-items: start;
   flex-wrap: wrap;
   gap: 1.5rem;
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 @media (min-width: 768px) {
   .heroGrid {
     flex-wrap: nowrap;
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 

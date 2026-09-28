@@ -15,6 +15,7 @@ interface Props {
     tech: string[];
     title: string;
     code: string;
+    category?: "personal" | "freelance";
 }
 
 export const Project = ({
@@ -25,6 +26,7 @@ export const Project = ({
                             title,
                             code,
                             tech,
+                            category,
                         }: Props) => {
     const [hovered, setHovered] = useState(false);
 
@@ -83,9 +85,25 @@ export const Project = ({
                             <h4 className="font-bold text-lg shrink-0 max-w-[calc(100%-150px)] my-4">{title}</h4>
                             <div className="w-full h-[1px] bg-text opacity-30" />
 
-                            <Link href={code} target="_blank" rel="nofollow" className="opacity-75 hover:opacity-100 transition-all duration-300">
-                                <AiFillGithub size="1.8rem" />
-                            </Link>
+                            {category === "freelance" ? (
+                                <div className="relative group/github flex items-center justify-center">
+                                    <div
+                                        title="Private Repo"
+                                        className="opacity-75 hover:opacity-100 transition-all duration-300 cursor-not-allowed flex items-center justify-center text-text"
+                                    >
+                                        <AiFillGithub size="1.8rem" />
+                                    </div>
+                                    <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 hidden group-hover/github:flex items-center gap-1.5 px-2.5 py-1 rounded bg-background-light text-white text-xs font-medium whitespace-nowrap shadow-xl border border-white/10 pointer-events-none z-50">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                                        Private Repo
+                                        <span className="absolute top-full left-1/2 -translate-x-1/2 -mt-[1px] border-4 border-transparent border-t-background-light"></span>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link href={code} target="_blank" rel="nofollow" className="opacity-75 hover:opacity-100 transition-all duration-300">
+                                    <AiFillGithub size="1.8rem" />
+                                </Link>
+                            )}
 
                             <Link href={projectLink} target="_blank" rel="nofollow" className="opacity-75 hover:opacity-100 transition-all duration-300">
                                 <AiOutlineExport size="1.8rem" />
@@ -112,6 +130,7 @@ export const Project = ({
                 title={title}
                 code={code}
                 tech={tech}
+                category={category}
             />
         </>
     );

@@ -16,6 +16,7 @@ interface Props {
     projectLink: string;
     tech: string[];
     modalContent: JSX.Element;
+    category?: "personal" | "freelance";
 }
 
 export const ProjectModal = ({
@@ -27,6 +28,7 @@ export const ProjectModal = ({
                                  title,
                                  code,
                                  tech,
+                                 category,
                              }: Props) => {
     useEffect(() => {
         const body = document.querySelector("body");
@@ -71,9 +73,25 @@ export const ProjectModal = ({
                             Project Links<span className="text-brand">.</span>
                         </p>
                         <div className="flex items-center gap-6 mt-2">
-                            <Link target="_blank" rel="nofollow" href={code} className="flex items-center gap-1 text-brand text-base hover:underline transition-all duration-150">
-                                <AiFillGithub /> source code
-                            </Link>
+                            {category === "freelance" ? (
+                                <div className="relative group/modalGithub flex items-center">
+                                    <div
+                                        title="Private Repo"
+                                        className="flex items-center gap-1.5 text-text/50 text-base cursor-not-allowed hover:text-text/70 transition-colors"
+                                    >
+                                        <AiFillGithub /> private repo
+                                    </div>
+                                    <div className="absolute bottom-full mb-2 left-0 hidden group-hover/modalGithub:flex items-center gap-1.5 px-2.5 py-1 rounded bg-background text-white text-xs font-medium whitespace-nowrap shadow-xl border border-white/10 pointer-events-none z-50">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span>
+                                        Private Repo
+                                        <span className="absolute top-full left-4 -mt-[1px] border-4 border-transparent border-t-background"></span>
+                                    </div>
+                                </div>
+                            ) : (
+                                <Link target="_blank" rel="nofollow" href={code} className="flex items-center gap-1 text-brand text-base hover:underline transition-all duration-150">
+                                    <AiFillGithub /> source code
+                                </Link>
+                            )}
                             <Link target="_blank" rel="nofollow" href={projectLink} className="flex items-center gap-1 text-brand text-base hover:underline transition-all duration-150">
                                 <AiOutlineExport /> live project
                             </Link>
