@@ -16,7 +16,7 @@ export const projects: ProjectItem[] = [
     title: "Coder's Blog",
     imgSrc: "/coders-blog.png",
     code: "https://github.com/Lokeshsingh78/coders-blog",
-    projectLink: "https://coders-blog-h2h6.onrender.com/",
+    projectLink: "https://coders-blogs.vercel.app/",
     tech: ["React", "Node.js", "MongoDB", "Express"],
     category: "personal",
     description: "A MERN-powered full-stack blog platform with secure authentication and an intuitive user Blogs designed for developers and tech enthusiasts.",
