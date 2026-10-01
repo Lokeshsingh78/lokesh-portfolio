@@ -146,9 +146,9 @@ export const projects: ProjectItem[] = [
   },
   {
     title: "Nation Navigator",
-    imgSrc: "/nation-navigator.png",
+    imgSrc: "/nation-navigator-preview.png",
     code: "https://github.com/Lokeshsingh78/NationNavigator",
-    projectLink: "https://lokeshsingh78.github.io/NationNavigator/",
+    projectLink: "https://nation-navigator-five.vercel.app/",
     tech: ["React", "CSS", "REST API"],
     category: "personal",
     description: "A React-based web application that allows users to explore countries around the world with detailed information and an interactive UI.",
