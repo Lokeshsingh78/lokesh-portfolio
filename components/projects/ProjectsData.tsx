@@ -80,7 +80,7 @@ export const projects: ProjectItem[] = [
   },
   {
     title: "CantGetCaught-Code",
-    imgSrc: "/cantgetcaught-code.png",
+    imgSrc: "/cantgetcaught-code-preview.png",
     code: "https://github.com/Lokeshsingh78/cantgetcaught-code",
     projectLink: "https://cantgetcaught-code.vercel.app/",
     tech: ["Next.js", "React", "JavaScript", "CSS3", "API"],
